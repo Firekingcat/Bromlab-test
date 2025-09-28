@@ -64,6 +64,12 @@
             margin: 0 auto;
         }
 
+        .nav-logo {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
         .logo {
             display: flex;
             align-items: center;
@@ -72,11 +78,12 @@
             color: #fff;
         }
 
-        .logo img {
+        .logo-image {
             width: 40px;
             height: 40px;
             margin-right: 15px;
-            object-fit: contain;
+            background: #fff;
+            border-radius: 50%;
         }
 
         .nav-menu {
@@ -93,7 +100,7 @@
         }
 
         .nav-item a:hover {
-            color: #E53935;
+            color: #00ff88;
         }
 
         /* Hero Section */
@@ -125,21 +132,14 @@
         }
 
         .hero-title {
-            width: 100%;
-            max-width: 800px;
-            height: auto;
+            font-size: clamp(60px, 8vw, 120px);
+            font-weight: 900;
             margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-title img {
-            max-width: 100%;
-            height: auto;
-            max-height: 200px;
-            object-fit: contain;
-            filter: drop-shadow(0 20px 40px rgba(229, 57, 53, 0.3));
+            background: linear-gradient(45deg, #fff, #00ff88);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(0, 255, 136, 0.3);
         }
 
         .hero-description {
@@ -152,18 +152,18 @@
         .cta-button {
             display: inline-block;
             padding: 15px 40px;
-            background: linear-gradient(45deg, #E53935, #D32F2F);
-            color: #fff;
+            background: linear-gradient(45deg, #00ff88, #00cc6a);
+            color: #000;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(229, 57, 53, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
         }
 
         .cta-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(229, 57, 53, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.4);
         }
 
         /* About Section */
@@ -368,7 +368,8 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <img src="img/logo.svg" alt="Bromlab Logo">
+                <div class="logo-image"></div>
+                Bromlab
             </div>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#about">About us</a></li>
@@ -385,9 +386,7 @@
     <section class="hero">
         <div class="hero-content">
             <p class="hero-subtitle">당신의 모든 상상은 현실이 됩니다</p>
-            <div class="hero-title">
-                <img src="img/logo 2.svg" alt="Bromlab Main Logo">
-            </div>
+            <h1 class="hero-title">BROMLAB</h1>
             <p class="hero-description">
                 브롬랩은 지금 당장만이 아닌, 5년 후 그리고 그 이상 브랜드의 미래를 보고 바꿔어 나가는 기업입니다.<br>
                 우리만의 크리에이티브팀은 브랜드 트렌드를 선도하며, 브랜드의 미래와 그 가치를 독창적으로 바꿔고 있습니다.

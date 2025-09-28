@@ -54,6 +54,16 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             transition: all 0.3s ease;
+            transform: translateY(0);
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .navbar.minimal {
+            padding: 10px 50px;
+            background: rgba(0, 0, 0, 0.95);
         }
 
         .nav-container {
@@ -62,12 +72,19 @@
             align-items: center;
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
         }
 
         .nav-logo {
-            width: 40px;
-            height: 40px;
+            width: 120px;
+            height: 120px;
             object-fit: contain;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.minimal .nav-logo {
+            width: 60px;
+            height: 60px;
         }
 
         .logo {
@@ -80,6 +97,7 @@
             display: flex;
             list-style: none;
             gap: 40px;
+            transition: all 0.3s ease;
         }
 
         .nav-item a {
@@ -90,6 +108,175 @@
         }
 
         .nav-item a:hover {
+            color: #CE2C1E;
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 30px;
+            height: 25px;
+            justify-content: space-between;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Floating Hamburger Button */
+        .floating-hamburger {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: rgba(206, 44, 30, 0.9);
+            border-radius: 50%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1002;
+            box-shadow: 0 4px 20px rgba(206, 44, 30, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .floating-hamburger:hover {
+            background: rgba(206, 44, 30, 1);
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(206, 44, 30, 0.4);
+        }
+
+        .floating-hamburger.show {
+            display: flex;
+        }
+
+        .floating-hamburger span {
+            display: block;
+            height: 2px;
+            width: 20px;
+            background: #fff;
+            border-radius: 2px;
+            margin: 2px 0;
+            transition: all 0.3s ease;
+        }
+
+        .floating-hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .floating-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .floating-hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            transition: right 0.3s ease;
+            z-index: 1000;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 50px;
+        }
+
+        .close-btn {
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-btn::before,
+        .close-btn::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 3px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn::before {
+            transform: rotate(45deg);
+        }
+
+        .close-btn::after {
+            transform: rotate(-45deg);
+        }
+
+        .close-btn:hover::before,
+        .close-btn:hover::after {
+            background: #CE2C1E;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mobile-menu li {
+            margin-bottom: 30px;
+        }
+
+        .mobile-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
             color: #CE2C1E;
         }
 
@@ -338,6 +525,24 @@
                 display: none;
             }
             
+            .hamburger {
+                display: flex;
+            }
+            
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .nav-logo {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .navbar.minimal .nav-logo {
+                width: 50px;
+                height: 50px;
+            }
+            
             .hero-title {
                 font-size: 60px;
             }
@@ -347,12 +552,24 @@
                 gap: 40px;
             }
             
-            .navbar {
-                padding: 15px 20px;
-            }
-            
             .about, .services {
                 padding: 80px 20px;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .hamburger {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-menu {
+                display: none;
             }
         }
     </style>
@@ -364,7 +581,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">Bromlab</div>
+            <img src="img/logo.svg" alt="Bromlab Logo" class="nav-logo">
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#about">About us</a></li>
                 <li class="nav-item"><a href="#services">Brom Network</a></li>
@@ -373,8 +590,35 @@
                 <li class="nav-item"><a href="#contact">Contact</a></li>
                 <li class="nav-item"><a href="#kor">Kor ↓</a></li>
             </ul>
-            <img src="img/logo.svg" alt="Bromlab Logo" class="nav-logo">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
+    </nav>
+
+    <!-- Floating Hamburger Button -->
+    <div class="floating-hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <button class="close-btn" aria-label="Close menu"></button>
+        </div>
+        <ul>
+            <li><a href="#about">About us</a></li>
+            <li><a href="#services">Brom Network</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#career">Career</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#kor">Kor ↓</a></li>
+        </ul>
+    </div>
     </nav>
 
     <!-- Hero Section -->
@@ -479,6 +723,66 @@
             }
         }
 
+        // Navigation scroll behavior
+        let lastScrollTop = 0;
+        let scrollThreshold = 100;
+
+        function handleNavbarScroll() {
+            const navbar = document.querySelector('.navbar');
+            const floatingHamburger = document.querySelector('.floating-hamburger');
+            const currentScroll = window.scrollY;
+            
+            // Hide/show navbar based on scroll direction
+            if (currentScroll > scrollThreshold) {
+                if (currentScroll > lastScrollTop) {
+                    // Scrolling down - hide navbar and show floating button
+                    navbar.classList.add('hidden');
+                    floatingHamburger.classList.add('show');
+                } else {
+                    // Scrolling up - show navbar in minimal mode and hide floating button
+                    navbar.classList.remove('hidden');
+                    navbar.classList.add('minimal');
+                    floatingHamburger.classList.remove('show');
+                }
+            } else {
+                // At top of page - show full navbar and hide floating button
+                navbar.classList.remove('hidden', 'minimal');
+                floatingHamburger.classList.remove('show');
+            }
+            
+            lastScrollTop = currentScroll;
+        }
+
+        // Hamburger menu toggle
+        function toggleMobileMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const floatingHamburger = document.querySelector('.floating-hamburger');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            hamburger.classList.toggle('active');
+            floatingHamburger.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (mobileMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Close mobile menu
+        function closeMobileMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const floatingHamburger = document.querySelector('.floating-hamburger');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            hamburger.classList.remove('active');
+            floatingHamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
         // Scroll animations
         function handleScrollAnimations() {
             const elements = document.querySelectorAll('.fade-in');
@@ -490,16 +794,6 @@
                     element.classList.add('visible');
                 }
             });
-        }
-
-        // Navbar background on scroll
-        function handleNavbarScroll() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(0, 0, 0, 0.95)';
-            } else {
-                navbar.style.background = 'rgba(0, 0, 0, 0.9)';
-            }
         }
 
         // Smooth scrolling for navigation links
@@ -515,6 +809,15 @@
                             behavior: 'smooth',
                             block: 'start'
                         });
+                        
+                        // Close mobile menu if open
+                        const mobileMenu = document.querySelector('.mobile-menu');
+                        const hamburger = document.querySelector('.hamburger');
+                        if (mobileMenu.classList.contains('active')) {
+                            mobileMenu.classList.remove('active');
+                            hamburger.classList.remove('active');
+                            document.body.style.overflow = '';
+                        }
                     }
                 });
             });
@@ -526,9 +829,27 @@
             initSmoothScrolling();
             handleScrollAnimations();
             
+            // Add hamburger click event
+            const hamburger = document.querySelector('.hamburger');
+            const floatingHamburger = document.querySelector('.floating-hamburger');
+            hamburger.addEventListener('click', toggleMobileMenu);
+            floatingHamburger.addEventListener('click', toggleMobileMenu);
+            
+            // Add close button click event
+            const closeBtn = document.querySelector('.close-btn');
+            closeBtn.addEventListener('click', closeMobileMenu);
+            
+            // Throttled scroll handler
+            let ticking = false;
             window.addEventListener('scroll', function() {
-                handleScrollAnimations();
-                handleNavbarScroll();
+                if (!ticking) {
+                    requestAnimationFrame(function() {
+                        handleScrollAnimations();
+                        handleNavbarScroll();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
             });
         });
     </script>
